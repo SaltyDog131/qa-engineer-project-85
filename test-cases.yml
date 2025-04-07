@@ -1,0 +1,137 @@
+---
+- summary: |
+    Проверка регистрации нового пользователя
+  requirement: |
+    Пользователь должен иметь возможность зарегистрироваться, указав никнейм, email и пароль.
+  prerequisites: |
+    no data.
+  test-data: |
+    Логин = new_user  
+    Email = new_user@example.com  
+    Пароль = Password123
+  steps:
+    - Вводим никнейм
+    - Вводим email
+    - Вводим пароль
+    - Подтверждаем регистрацию
+  expected-result: |
+    Пользователь успешно зарегистрирован.
+
+- summary: |
+    Проверка входа пользователя с верными email и паролем
+  requirement: |
+    При верном email и пароле пользователь должен войти в систему.
+  prerequisites: |
+    Зарегистрированный пользователь существует.
+  test-data: |
+    Email = existing_user@mail  
+    Пароль = Password123
+  steps:
+    - Вводим email
+    - Вводим пароль
+    - Нажимаем кнопку "Submit"
+  expected-result: |
+    Пользователь успешно входит в систему.
+
+- summary: |
+    Проверка входа пользователя с неверным email или паролем
+  requirement: |
+    При неправильных данных входа должно отображаться сообщение об ошибке.
+  prerequisites: |
+    Открыта форма входа.
+  test-data: |
+    Email = existing_user45@mail  
+    Пароль = Password12345
+  steps:
+    - Вводим неверный email и пароль
+    - Нажимаем кнопку "Submit"
+  expected-result: |
+    Отображается сообщение об ошибке.
+
+- summary: |
+    Проверка выхода из системы
+  requirement: |
+    Пользователь должен иметь возможность выйти из системы.
+  prerequisites: |
+    Пользователь авторизован.
+  test-data: |
+    no data
+  steps:
+    - Нажимаем на меню пользователя
+    - Выбираем пункт "Sign out"
+  expected-result: |
+    Пользователь выходит из системы.
+
+- summary: |
+    Проверка восстановления пароля
+  requirement: |
+    Пользователь должен иметь возможность восстановить пароль, используя email.
+  prerequisites: |
+    no data.
+  test-data: |
+    Email = existing_user@mail 
+  steps:
+    - Нажимаем ссылку "Forgot your password?"
+    - Вводим email: existing_user@mail 
+    - Нажимаем кнопку "Submit"
+  expected-result: |
+    Отображается сообщение о том, что письмо для восстановления пароля отправлено на почту.
+
+- summary: |
+    Проверка регистрации с уже существующим никнеймом или email
+  requirement: |
+    При попытке зарегистрироваться с никнеймом или email, которые уже используются, должно отображаться сообщение об ошибке.
+  prerequisites: |
+    Пользователь с логином "existing_user" и email "existing_user@mail" уже зарегистрирован.
+  test-data: |
+    Никнейм = existing_user  
+    Email = existing_user@mail   
+    Пароль = NewPassword123
+  steps:
+    - Вводим никнейм и email
+    - Вводим новый пароль
+    - Нажимаем кнопку "Sign up"
+  expected-result: |
+    Отображается сообщение об ошибке.
+
+- summary: |
+    Проверка создания новой игры
+  requirement: |
+    Пользователь может создать новую игру.
+  prerequisites: |
+    no data.
+  test-data: |
+    no data.
+  steps:
+    - Нажимаем кнопку "Create a game"
+    - Выбираем "With a bot"
+    - Нажимаем кнопку "Create a battle"
+  expected-result: |
+    Игра создается.
+
+- summary: |
+    Проверка присоединения к уже созданной игре
+  requirement: |
+    Пользователь может присоединиться к уже созданной игре.
+  prerequisites: |
+    Открытая игра доступна в списке активных игр.
+  test-data: |
+    no data
+  steps:
+    - Нажимаем кнопку "Fight" рядом с игрой
+  expected-result: |
+    Пользователь присоединяется к выбранной игре.
+
+- summary: |
+    Проверка возможности общения в чате
+  requirement: |
+    В игре доступен чат для общения с соперником и зрителями.
+  prerequisites: |
+    no data
+  test-data: |
+    Сообщение = "Hi! This is the test"
+  steps:
+    - Игрок вводит сообщение "Hi! This is the test" в окно чата
+    - Нажимает кнопку отправки
+  expected-result: |
+    Сообщение отображается в чате.
