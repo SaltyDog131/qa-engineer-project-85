@@ -36,5 +36,9 @@
   status: pass
 
 - summary: |
+    Проверка отмены создания новой игры
+  status: fail
+
+- summary: |
     Проверка возможности общения в чате
   status: pass
