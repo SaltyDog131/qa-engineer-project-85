@@ -6,9 +6,7 @@
   prerequisites: |
     no data.
   test-data: |
-    Логин = new_user  
-    Email = new_user@example.com  
-    Пароль = Password123
+    no data.
   steps:
     - Вводим никнейм
     - Вводим email
