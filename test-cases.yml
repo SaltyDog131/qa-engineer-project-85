@@ -83,10 +83,8 @@
     При попытке зарегистрироваться с никнеймом или email, которые уже используются, должно отображаться сообщение об ошибке.
   prerequisites: |
     Пользователь с логином "existing_user" и email "existing_user@mail" уже зарегистрирован.
-  test-data: |
-    Никнейм = existing_user  
-    Email = existing_user@mail   
-    Пароль = NewPassword123
+  test-data: | 
+    Email = existing_user@mail 
   steps:
     - Вводим никнейм и email
     - Вводим новый пароль
